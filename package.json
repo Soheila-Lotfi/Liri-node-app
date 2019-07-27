@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/Soheila-Lotfi/Liri-node-app/issues"
   },
-  "homepage": "https://github.com/Soheila-Lotfi/Liri-node-app#readme"
+  "homepage": "https://github.com/Soheila-Lotfi/Liri-node-app#readme",
+  "dependencies": {
+    "dotenv": "^8.0.0",
+    "node-spotify-api": "^1.1.1"
+  }
 }
