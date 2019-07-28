@@ -40,17 +40,7 @@ if (operand === "concert-this") {
   if (process.argv[3]) {
     song = process.argv.slice(3).join(" ");
   }
-
-  spotify.search({ type: "track", query: song }, function(err, data) {
-    if (err) {
-      return console.log("Error occurred: " + err);
-    }
-
-    // console.log(JSON.stringify(data));
-    // console.log(data.tracks);
-    var obj = JSON.parse(JSON.stringify(data.tracks.items[2].album.name));
-    console.log(obj);
-  });
+  spotifyThisSong(song);
 }
 // ------------------`node liri.js movie-this '<movie name here>'--------------------------------
 else if (operand === "movie-this") {
