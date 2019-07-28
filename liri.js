@@ -26,29 +26,13 @@ var artist;
 var song = "The Sign";
 var queryUrl;
 var movieName = "Mr. Nobody";
-//----------------------------- node liri.js concert-this <artist/band name command-------------
+//----------------------------- node liri.js concert-this <artist/band> command-------------
 // node liri.js concert-this <artist/band name here,  this command will search the bands in town artist events api for an artist and
 // render some information about each event to the terminal
 
 if (operand === "concert-this") {
   artist = process.argv.slice(3).join(" "); // try Rod Stewart as an artist
-  queryUrl =
-    "https://rest.bandsintown.com/artists/" +
-    artist +
-    "/events?app_id=codingbootcamp";
-  axios.get(queryUrl).then(function(response) {
-    for (i = 0; i < response.data.length; i++) {
-      console.log("Name of the venue: " + response.data[i].venue.name);
-      console.log(
-        "venue location: " +
-          response.data[i].venue.city +
-          "," +
-          response.data[0].venue.country
-      );
-      console.log("Date of the event: " + response.data[i].datetime);
-      console.log("-------------------------------");
-    }
-  });
+  concertThis(artist);
 
   //-------------node liri.js spotfiy-this-song '<song name here>' command -----------------
   //// * This will show the following information about the song in your terminal/bash window
@@ -111,7 +95,7 @@ else if (operand === "do-what-it-says") {
   });
 }
 
-/////  spotifyThisSong function///////////////
+//---------spotifyThisSong function-------------------------------
 function spotifyThisSong(song) {
   spotify.search({ type: "track", query: song }, function(err, data) {
     if (err) {
@@ -162,13 +146,3 @@ function movieThis(movie) {
     console.log("Actors: " + response.data.Actors);
   });
 }
-
-/////////////
-
-// 4. `node liri.js do-what-it-says`
-
-//    * Using the `fs` Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
-
-//      * It should run `spotify-this-song` for "I Want it That Way," as follows the text in `random.txt`.
-
-//      * Edit the text in random.txt to test out the feature for movie-this and concert-this.
