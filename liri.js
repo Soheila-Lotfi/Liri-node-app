@@ -89,6 +89,10 @@ function concertThis(artist) {
           response.data[0].venue.country
       );
       console.log("Date of the event: " + response.data[i].datetime);
+      console.log(
+        "Date of the event: " +
+          moment(response.data[i].datetime).format("MM/DD/YYYY")
+      );
       console.log("-------------------------------");
     }
   });
