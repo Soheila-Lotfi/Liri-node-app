@@ -136,3 +136,31 @@ function concertThis(artist) {
     }
   });
 }
+
+//-----------------movieThis function -------------
+
+function movieThis() {
+  queryUrl = " http://www.omdbapi.com/?t=" + movieName + "&apikey=trilogy";
+
+  axios.get(queryUrl).then(function(response) {
+    console.log(response.data.Title); // response is an object which includes data
+    console.log("Title: " + response.data.Title);
+    console.log("Year: " + response.data.Year);
+    console.log("IMDB Rating: " + response.data.imdbRating);
+    // console.log("IMDB Rating: " + response.imdbRaing);  ///rotten
+    console.log("Country: " + response.data.Country);
+    console.log("Language: " + response.data.Language);
+    console.log("Plot: " + response.data.Plot);
+    console.log("Actors: " + response.data.Actors);
+  });
+}
+
+/////////////
+
+// 4. `node liri.js do-what-it-says`
+
+//    * Using the `fs` Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
+
+//      * It should run `spotify-this-song` for "I Want it That Way," as follows the text in `random.txt`.
+
+//      * Edit the text in random.txt to test out the feature for movie-this and concert-this.
