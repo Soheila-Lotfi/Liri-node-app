@@ -47,20 +47,7 @@ else if (operand === "movie-this") {
   if (process.argv[3]) {
     movieName = process.argv.slice(3).join(" ");
   }
-
-  queryUrl = " http://www.omdbapi.com/?t=" + movieName + "&apikey=trilogy";
-
-  axios.get(queryUrl).then(function(response) {
-    console.log(response.data.Title); // response is an object which includes data
-    console.log("Title: " + response.data.Title);
-    console.log("Year: " + response.data.Year);
-    console.log("IMDB Rating: " + response.data.imdbRating);
-    // console.log("IMDB Rating: " + response.imdbRaing);  ///rotten
-    console.log("Country: " + response.data.Country);
-    console.log("Language: " + response.data.Language);
-    console.log("Plot: " + response.data.Plot);
-    console.log("Actors: " + response.data.Actors);
-  });
+  movieThis(movieName);
 }
 //--------------------------- `node liri.js do-what-it-says`-------
 else if (operand === "do-what-it-says") {
