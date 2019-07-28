@@ -15,7 +15,9 @@ var axios = require("axios");
 // node-spotify-api package
 var Spotify = require("node-spotify-api");
 var spotify = new Spotify(keys.spotify);
-console.log(spotify);
+
+// fs package
+var fs=require("fs");
 
 //------------ variables-------------
 
@@ -86,3 +88,9 @@ else if (operand === "movie-this") {
     console.log("Actors: " + response.data.Actors);
   });
 }
+//--------------------------- 
+else if(){
+
+}
+
+
