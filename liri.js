@@ -75,6 +75,7 @@ function spotifyThisSong(song) {
 //------------------------------------ concertThis function -------------------
 
 function concertThis(artist) {
+  //Bands in Town Artist Events API
   queryUrl =
     "https://rest.bandsintown.com/artists/" +
     artist +
@@ -88,7 +89,6 @@ function concertThis(artist) {
           "," +
           response.data[0].venue.country
       );
-      console.log("Date of the event: " + response.data[i].datetime);
       console.log(
         "Date of the event: " +
           moment(response.data[i].datetime).format("MM/DD/YYYY")
@@ -104,10 +104,17 @@ function movieThis(movie) {
   queryUrl = " http://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
 
   axios.get(queryUrl).then(function(response) {
+    console.log(response.data);
     console.log(response.data.Title); // response is an object which includes data
     console.log("Title: " + response.data.Title);
     console.log("Year: " + response.data.Year);
     console.log("IMDB Rating: " + response.data.imdbRating);
+
+    for (i = 0; i < response.data.Ratings.length; i++) {
+      if (response.data.Ratings[i].Source === "Rotten Tomatoes") {
+        console.log("Rotten Tomatoes Rating:" + response.data.Ratings[i].Value);
+      }
+    }
     // console.log("IMDB Rating: " + response.imdbRaing);  ///rotten
     console.log("Country: " + response.data.Country);
     console.log("Language: " + response.data.Language);
