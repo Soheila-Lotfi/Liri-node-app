@@ -103,6 +103,10 @@ else if (operand === "do-what-it-says") {
     } else if (command === "movie-this") {
       movie = dataArr[1];
       movieThis(movie);
+    } else if (command === "concert-this") {
+      artist = dataArr[1];
+      console.log(artist);
+      concertThis(artist);
     }
   });
 }
@@ -143,8 +147,8 @@ function concertThis(artist) {
 
 //-----------------movieThis function -------------
 
-function movieThis() {
-  queryUrl = " http://www.omdbapi.com/?t=" + movieName + "&apikey=trilogy";
+function movieThis(movie) {
+  queryUrl = " http://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
 
   axios.get(queryUrl).then(function(response) {
     console.log(response.data.Title); // response is an object which includes data
