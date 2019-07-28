@@ -51,25 +51,7 @@ else if (operand === "movie-this") {
 }
 //--------------------------- `node liri.js do-what-it-says`-------
 else if (operand === "do-what-it-says") {
-  fs.readFile("random.txt", "utf8", function(err, data) {
-    if (err) {
-      return console.log("Error occurred: " + err);
-    }
-
-    var dataArr = data.split(",");
-    var command = dataArr[0];
-    if (command === "spotify-this-song") {
-      song = dataArr[1];
-      spotifyThisSong(song);
-    } else if (command === "movie-this") {
-      movie = dataArr[1];
-      movieThis(movie);
-    } else if (command === "concert-this") {
-      artist = dataArr[1];
-      console.log(artist);
-      concertThis(artist);
-    }
-  });
+  doWhatItSays();
 }
 
 //---------spotifyThisSong function-------------------------------
@@ -121,5 +103,29 @@ function movieThis(movie) {
     console.log("Language: " + response.data.Language);
     console.log("Plot: " + response.data.Plot);
     console.log("Actors: " + response.data.Actors);
+  });
+}
+
+//--------------------------- doWhatItSays function---------------
+
+function doWhatItSays() {
+  fs.readFile("random.txt", "utf8", function(err, data) {
+    if (err) {
+      return console.log("Error occurred: " + err);
+    }
+
+    var dataArr = data.split(",");
+    var command = dataArr[0];
+    if (command === "spotify-this-song") {
+      song = dataArr[1];
+      spotifyThisSong(song);
+    } else if (command === "movie-this") {
+      movie = dataArr[1];
+      movieThis(movie);
+    } else if (command === "concert-this") {
+      artist = dataArr[1];
+      console.log(artist);
+      concertThis(artist);
+    }
   });
 }
