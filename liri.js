@@ -47,6 +47,7 @@ if (operand === "concert-this") {
       console.log("-------------------------------");
     }
   });
+
   //-------------node liri.js spotfiy-this-song '<song name here>' command -----------------
   //// * This will show the following information about the song in your terminal/bash window
 } else if (operand === "spotify-this-song") {
@@ -66,3 +67,23 @@ if (operand === "concert-this") {
   });
 }
 // ------------------`node liri.js movie-this '<movie name here>'--------------------------------
+else if (operand === "movie-this") {
+  if (process.argv[3]) {
+    movieName = process.argv.slice(3).join(" ");
+  }
+
+  queryUrl = " http://www.omdbapi.com/?t=" + movieName + "&apikey=trilogy";
+
+  axios.get(queryUrl).then(function(response) {
+    console.log("Title: " + response.title);
+    console.log("Year: " + response.year);
+    console.log("IMDB Rating: " + response.imdbRaing);
+    // console.log("IMDB Rating: " + response.imdbRaing);  ///rotten
+    console.log("IMDB Rating: " + response.country);
+    console.log("IMDB Rating: " + response.language);
+    console.log("IMDB Rating: " + response.plot);
+    console.log("IMDB Rating: " + response.actors);
+
+    console.log("-------------------------------");
+  });
+}
