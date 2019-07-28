@@ -29,6 +29,7 @@ var artist;
 var song = "The Sign";
 var queryUrl;
 var movieName = "Mr. Nobody";
+var arr = [];
 
 //----------------------------- node liri.js concert-this <artist/band> command-------------
 // node liri.js concert-this <artist/band name here,  this command will search the bands in town artist events api for an artist and
@@ -61,15 +62,28 @@ else if (operand === "do-what-it-says") {
 //---------spotifyThisSong function-------------------------------
 
 function spotifyThisSong(song) {
-  spotify.search({ type: "track", query: song }, function(err, data) {
+  spotify.search({ type: "track", query: song, limit: 10 }, function(
+    err,
+    data
+  ) {
     if (err) {
       return console.log("Error occurred: " + err);
     }
+    console.log(data.tracks);
+    for (i = 0; i < data.tracks.items.length; i++) {
+      for (j = 0; j < data.tracks.items[i].album.artists.length; j++) {
+        arr.push(data.tracks.items[j].artists[j].name);
+      }
+      console.log("Artists: " + arr.join());
 
-    // console.log(JSON.stringify(data));
-    // console.log(data.tracks);
-    var obj = JSON.parse(JSON.stringify(data.tracks.items[2].album.name));
-    console.log(obj);
+      console.log("The song's name: " + data.tracks.items[i].name);
+
+      if (data.tracks.items[1].preview_url) {
+        console.log("Preview_url:" + data.tracks.items[i].preview_url);
+      }
+      console.log("Album:" + data.tracks.items[i].album.name);
+      console.log("-------------------------------------------------------");
+    }
   });
 }
 //------------------------------------ concertThis function -------------------
