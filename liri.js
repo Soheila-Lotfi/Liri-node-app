@@ -8,7 +8,7 @@ console.log(keys);
 
 // You should then be able to access your keys information like so
 
-// ---------------- import package -------------
+// ---------------- import packages -------------
 
 var axios = require("axios");
 
@@ -19,6 +19,9 @@ var spotify = new Spotify(keys.spotify);
 // fs package
 var fs = require("fs");
 
+// moment package
+var moment = require("moment");
+
 //------------ variables-------------
 
 var operand = process.argv[2];
@@ -26,6 +29,7 @@ var artist;
 var song = "The Sign";
 var queryUrl;
 var movieName = "Mr. Nobody";
+
 //----------------------------- node liri.js concert-this <artist/band> command-------------
 // node liri.js concert-this <artist/band name here,  this command will search the bands in town artist events api for an artist and
 // render some information about each event to the terminal
@@ -55,6 +59,7 @@ else if (operand === "do-what-it-says") {
 }
 
 //---------spotifyThisSong function-------------------------------
+
 function spotifyThisSong(song) {
   spotify.search({ type: "track", query: song }, function(err, data) {
     if (err) {
@@ -68,6 +73,7 @@ function spotifyThisSong(song) {
   });
 }
 //------------------------------------ concertThis function -------------------
+
 function concertThis(artist) {
   queryUrl =
     "https://rest.bandsintown.com/artists/" +
@@ -129,3 +135,5 @@ function doWhatItSays() {
     }
   });
 }
+
+//----------------------------------------------------------------------------
