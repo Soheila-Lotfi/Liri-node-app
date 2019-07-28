@@ -96,9 +96,13 @@ else if (operand === "do-what-it-says") {
     }
 
     var dataArr = data.split(",");
-    if (dataArr[0] === "spotify-this-song") {
+    var command = dataArr[0];
+    if (command === "spotify-this-song") {
       song = dataArr[1];
       spotifyThisSong(song);
+    } else if (command === "movie-this") {
+      movie = dataArr[1];
+      movieThis(movie);
     }
   });
 }
