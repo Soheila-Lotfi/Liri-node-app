@@ -75,15 +75,14 @@ else if (operand === "movie-this") {
   queryUrl = " http://www.omdbapi.com/?t=" + movieName + "&apikey=trilogy";
 
   axios.get(queryUrl).then(function(response) {
-    console.log("Title: " + response.title);
-    console.log("Year: " + response.year);
-    console.log("IMDB Rating: " + response.imdbRaing);
+    console.log(response.data.Title); // response is an object which includes data
+    console.log("Title: " + response.data.Title);
+    console.log("Year: " + response.data.Year);
+    console.log("IMDB Rating: " + response.data.imdbRating);
     // console.log("IMDB Rating: " + response.imdbRaing);  ///rotten
-    console.log("IMDB Rating: " + response.country);
-    console.log("IMDB Rating: " + response.language);
-    console.log("IMDB Rating: " + response.plot);
-    console.log("IMDB Rating: " + response.actors);
-
-    console.log("-------------------------------");
+    console.log("Country: " + response.data.Country);
+    console.log("Language: " + response.data.Language);
+    console.log("Plot: " + response.data.Plot);
+    console.log("Actors: " + response.data.Actors);
   });
 }
