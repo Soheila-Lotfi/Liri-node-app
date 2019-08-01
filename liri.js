@@ -4,7 +4,6 @@ require("dotenv").config();
 
 //  Add the code required to import the `keys.js` file and store it in a variable
 var keys = require("./keys.js");
-console.log(keys);
 
 // You should then be able to access your keys information like so
 
@@ -40,7 +39,7 @@ if (operand === "concert-this") {
   concertThis(artist);
 
   //-------------node liri.js spotfiy-this-song '<song name here>' command -----------------
-  //// * This will show the following information about the song in your terminal/bash window
+  //// * This will show some information about the song in your terminal/bash window
 } else if (operand === "spotify-this-song") {
   if (process.argv[3]) {
     song = process.argv.slice(3).join(" ");
@@ -48,6 +47,7 @@ if (operand === "concert-this") {
   spotifyThisSong(song);
 }
 // ------------------`node liri.js movie-this '<movie name here>'--------------------------------
+//// * This will show some information about the movie in your terminal/bash window
 else if (operand === "movie-this") {
   if (process.argv[3]) {
     movieName = process.argv.slice(3).join(" ");
@@ -55,6 +55,7 @@ else if (operand === "movie-this") {
   movieThis(movieName);
 }
 //--------------------------- `node liri.js do-what-it-says`-------
+//LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
 else if (operand === "do-what-it-says") {
   doWhatItSays();
 }
@@ -75,14 +76,15 @@ function spotifyThisSong(song) {
         arr.push(data.tracks.items[j].artists[j].name);
       }
       console.log("Artists: " + arr.join());
-
       console.log("The song's name: " + data.tracks.items[i].name);
 
       if (data.tracks.items[1].preview_url) {
         console.log("Preview_url:" + data.tracks.items[i].preview_url);
       }
       console.log("Album:" + data.tracks.items[i].album.name);
-      console.log("-------------------------------------------------------");
+      console.log(
+        "----------------------------------------------------------------------"
+      );
     }
   });
 }
@@ -126,7 +128,9 @@ function movieThis(movie) {
 
     for (i = 0; i < response.data.Ratings.length; i++) {
       if (response.data.Ratings[i].Source === "Rotten Tomatoes") {
-        console.log("Rotten Tomatoes Rating:" + response.data.Ratings[i].Value);
+        console.log(
+          "Rotten Tomatoes Rating: " + response.data.Ratings[i].Value
+        );
       }
     }
     // console.log("IMDB Rating: " + response.imdbRaing);  ///rotten
